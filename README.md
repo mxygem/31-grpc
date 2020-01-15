@@ -1,6 +1,6 @@
 # 31-grpc
 
-Demo grpc client and server build along side the justforfunc videos around protobuf and grpc. [Video here](https://www.youtube.com/watch?v=uolTUtioIrc)
+Demo grpc client and server built along side the justforfunc videos around protobuf and grpc. [Video here](https://www.youtube.com/watch?v=uolTUtioIrc)
 
 ## How to run
 
