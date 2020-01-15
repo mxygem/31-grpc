@@ -40,7 +40,6 @@ type length int64
 var endianess = binary.LittleEndian
 
 func (s taskServer) Add(ctx context.Context, text *todo.Text) (*todo.Task, error) {
-	fmt.Println("received task text:", text.Text)
 	task := &todo.Task{
 		Text: text.Text,
 		Done: false,
@@ -69,7 +68,6 @@ func (s taskServer) Add(ctx context.Context, text *todo.Text) (*todo.Task, error
 		return nil, fmt.Errorf("could not close file %s: %v", dbPath, err)
 	}
 
-	fmt.Printf("returning task: %+v\n", *task)
 	return task, nil
 }
 

@@ -1,34 +1,35 @@
-const PROTO_PATH = __dirname + "/../../todo/todo.proto";
+const PROTO_PATH = __dirname + "/../../todo/todo.proto"
 const port = "8888"
-const grpc = require('grpc');
-const protoLoader = require('@grpc/proto-loader');
+const grpc = require('grpc')
+const protoLoader = require('@grpc/proto-loader')
 const packageDefinition = protoLoader.loadSync(
-    PROTO_PATH,
-    {keepCase: true,
-     longs: String,
-     enums: String,
-     defaults: true,
-     oneofs: true
-    });
-const todo_proto = grpc.loadPackageDefinition(packageDefinition).todo;
+  PROTO_PATH,
+  {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+  });
+const todo_proto = grpc.loadPackageDefinition(packageDefinition).todo
 
 function main() {
-  const client = new todo_proto.Tasks(`localhost:${port}`, grpc.credentials.createInsecure());
+  const client = new todo_proto.Tasks(`localhost:${port}`, grpc.credentials.createInsecure())
 
   if (process.argv.length >= 3) {
     switch (process.argv[2].toLowerCase()) {
-      case "list": 
+      case "list":
         list(client)
 
-        break;
+        break
       case "add":
         add(client, process.argv[3])
 
-        break;
+        break
       default:
         console.log("unknown command specified")
 
-        break;
+        break
     }
   } else {
     console.log("please include either the List or Add command!")
@@ -42,20 +43,19 @@ const list = client => {
       return
     }
 
-    console.log("current tasks:", response);
+    console.log("current tasks:", response)
   })
 }
 
 const add = (client, text) => {
-  console.log("received text:", text)
-  client.add({"text": text}, (err, response) => {
+  client.add({ "text": text }, (err, response) => {
     if (err) {
       console.log(`could not add item ${task}: ${err}`)
       return
     }
-    
-    console.log("successfully added task:", response.text);
+
+    console.log("successfully added task:", response.text)
   })
 }
 
-main();
+main()
