@@ -18,7 +18,7 @@ import (
 const (
 	port         = "8888"
 	sizeOfLength = 8
-	dbPath       = "mydb.pb"
+	dbPath       = "db/mydb.pb"
 )
 
 func main() {
