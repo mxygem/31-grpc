@@ -7,6 +7,8 @@ message Task {
   bool done = 2;
 }
 
+message ListRequest {}
+
 message TaskList {
   repeated Task tasks = 1;
 }
@@ -14,9 +16,8 @@ message TaskList {
 message Text {
   string text = 1;
 }
-message Void {}
 
 service Tasks {
-  rpc List(Void) returns(TaskList) {}
+  rpc List(ListRequest) returns(TaskList) {}
   rpc Add(Text) returns(Task) {}
 }

@@ -57,7 +57,7 @@ func add(ctx context.Context, client todo.TasksClient, text string) error {
 }
 
 func list(ctx context.Context, client todo.TasksClient) error {
-	l, err := client.List(ctx, &todo.Void{})
+	l, err := client.List(ctx, &todo.ListRequest{})
 	if err != nil {
 		return fmt.Errorf("could not fetch tasks: %v", err)
 	}

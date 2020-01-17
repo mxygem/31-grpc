@@ -71,7 +71,7 @@ func (s taskServer) Add(ctx context.Context, text *todo.Text) (*todo.Task, error
 	return task, nil
 }
 
-func (s taskServer) List(ctx context.Context, void *todo.Void) (*todo.TaskList, error) {
+func (s taskServer) List(ctx context.Context, in *todo.ListRequest) (*todo.TaskList, error) {
 	b, err := ioutil.ReadFile(dbPath)
 	if err != nil {
 		return nil, fmt.Errorf("could not read %s: %v", dbPath, err)

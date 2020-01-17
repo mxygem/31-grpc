@@ -37,7 +37,7 @@ function main() {
 }
 
 const list = client => {
-  client.list(null, (err, response) => {
+  client.list({}, (err, response) => {
     if (err) {
       console.log("could not complete list request!", err.details)
       return

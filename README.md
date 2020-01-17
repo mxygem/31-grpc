@@ -13,5 +13,6 @@ Initially done in Go and then expanded out with clients in different languages.
 
 ## Generate
 
-* Go: `protoc -I ./todo todo.proto --go_out=plugins=grpc:.`
-* Ruby: `grpc_tools_ruby_protoc -I ./todo --ruby_out=./todo --grpc_out=.`
+* Go: `protoc -I . --go_out=plugins=grpc:. ./todo/todo.proto`
+* Ruby: `grpc_tools_ruby_protoc -I ./todo --ruby_out=./clients/ruby/lib --grpc_out=.`
+  * While protoc can generate the todo_pb.rb file, it doesn't seem to generate the services file we also need.
